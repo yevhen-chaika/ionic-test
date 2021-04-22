@@ -1,0 +1,45 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/products-list"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+  <ion-card *ngIf="productData">
+    <div class="ion-text-center">
+      <img src="{{ productData.image }}" />
+    </div>
+    <ion-card-header>
+      <ion-card-title>{{ productData.name }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      {{ productData.description }}
+    </ion-card-content>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row class="ion-justify-content-between">
+            <ion-button color="primary" (click)="amount = 100; onAmountChanged()">$100</ion-button>
+            <ion-button color="primary" (click)="amount = 10; onAmountChanged()">$10</ion-button>
+            <ion-button color="primary" (click)="quantity = 2; onQuantityChanged()">2 qty</ion-button>
+            <ion-button color="primary" (click)="quantity = 9; onQuantityChanged()">9 qty</ion-button>
+        </ion-row>
+        <ion-row class="ion-justify-content-start">
+          <ion-col offset-lg="2" size-lg="3" size-sm="5">
+            <ion-item>
+              <ion-label position="stacked">Amount, $</ion-label>
+              <ion-input [(ngModel)]="amount" debounce="1000" type="number" (ionChange)="onAmountChanged()"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col offset-lg="2" size-lg="3" size-sm="5">
+            <ion-item>
+              <ion-label position="stacked">Quantity</ion-label>
+              <ion-input [(ngModel)]="quantity"  debounce="1000"  type="number" (ionChange)="onQuantityChanged()"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
